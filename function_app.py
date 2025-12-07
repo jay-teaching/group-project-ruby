@@ -1,9 +1,8 @@
 import azure.functions as func
 import logging
+from prediction import make_prediction
 
 app = func.FunctionApp(http_auth_level=func.AuthLevel.FUNCTION)
-
-from prediction import make_prediction
 
 @app.route(route="ruby_predict")
 def ruby_predict(req: func.HttpRequest) -> func.HttpResponse:
