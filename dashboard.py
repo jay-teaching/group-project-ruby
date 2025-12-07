@@ -56,4 +56,3 @@ try:
 
 except requests.RequestException as e:
     st.error(f"Error calling API: {e}")
-
