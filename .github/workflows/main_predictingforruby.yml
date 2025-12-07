@@ -72,4 +72,4 @@ jobs:
           app-name: 'predictingforruby'
           slot-name: 'Production'
           package: ${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_C3E60EA2511A4DEC8D959BBF7C53FFCE }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_3F22FAE307B64E73A72AD6BEF1A1C1C6 }}
