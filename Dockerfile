@@ -1,26 +1,20 @@
-# Pick a base image
 FROM python:3.12-slim
 
-# Set working directory
 WORKDIR /app
 
-# Install uv as per official docs
-COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
+# Install system dependencies
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    build-essential \
+    && rm -rf /var/lib/apt/lists/*
 
-# Copy uv project configuration
-COPY pyproject.toml .
-COPY uv.lock .
-COPY .python-version .
+# Copy files
+COPY streamlit_app.py /app/
+COPY Logo1_.png /app/
+COPY requirements.txt /app/
 
-# Copy project files
-COPY notebooks/* notebooks/
-COPY input/* input/
+# Install Python dependencies
+RUN pip install --no-cache-dir -r requirements.txt
 
-# Install dependencies with uv
-RUN uv sync
+EXPOSE 8501
 
-# Expose port for marimo
-EXPOSE 8080
-
-# Run marimo with uv
-CMD ["uv", "run", "marimo", "run", "--host", "0.0.0.0", "--port", "8080", "notebooks/telco_marimo.py"]
+CMD ["streamlit", "run", "streamlit_app.py", "--server.address=0.0.0.0"]
