@@ -19,7 +19,7 @@ def ruby_predict(req: func.HttpRequest) -> func.HttpResponse:
     )
 
     if tenure and monthly and techsupport:
-        return func.HttpResponse(f"For the given tenure, monthly and techsupport, the predicted churn is {prediction}. This HTTP triggered function executed successfully.")
+        return func.HttpResponse(f"For the given customer tenure, monthly charge amount, and tech support, the predicted churn is {prediction}. This HTTP triggered function executed successfully.")
     else:
         return func.HttpResponse(
              "This HTTP triggered function executed successfully. tenure, monthly and techsupport.",
