@@ -15,6 +15,7 @@ with app.setup:
     from sklearn.model_selection import train_test_split
     from sklearn.preprocessing import StandardScaler
     from sklearn.ensemble import RandomForestClassifier
+    from xgboost import XGBClassifier
 
 
 @app.cell(hide_code=True)
@@ -34,15 +35,9 @@ def _():
 
     SAVE_MODEL = False
 
-    SELECTED_FEATURES = ["tenure", 
-                         "MonthlyCharges", 
-                         "TechSupport_yes",
-                         "InternetService_fiber optic",
-                         'Contract_one year', 
-                         'Contract_two year',
-                         "PaymentMethod_electronic check",
-                         'OnlineSecurity_yes',
-                         'PaperlessBilling_yes']
+    SELECTED_FEATURES = ['Dependents_yes','TechSupport_yes','Contract_one year', 'Contract_two year', 'OnlineBackup_yes','OnlineSecurity_yes', 'InternetService_fiber optic',
+                         'DeviceProtection_yes','tenure', 'MonthlyCharges']
+    
     TEST_SIZE = 0.20
     C_VALUE = 1.0
     MAX_ITER = 1000
@@ -105,7 +100,7 @@ def _(preprocess_telco, telco_df):
 
 
 @app.cell
-def _(C_VALUE,SOLVER, MAX_ITER,TEST_SIZE, X_scaled, y):  
+def _(TEST_SIZE, X_scaled, y):  #C_VALUE,SOLVER, MAX_ITER,
     X_train, X_test, y_train, y_test = train_test_split(
         X_scaled,
         y,
@@ -114,21 +109,31 @@ def _(C_VALUE,SOLVER, MAX_ITER,TEST_SIZE, X_scaled, y):
         random_state=42,
     )
 
-    model = LogisticRegression(
-        solver=SOLVER, C=C_VALUE, class_weight="balanced", max_iter=MAX_ITER, random_state=42
-    )
+    #model = LogisticRegression(
+    #    solver=SOLVER, C=C_VALUE, class_weight="balanced", max_iter=MAX_ITER, random_state=42
+    #)
 
     #model1 = RandomForestClassifier(class_weight="balanced", n_estimators=100, max_depth=10,
     #min_samples_split=20,random_state=42
     #) # LR is performing better
 
-    model.fit(X_train, y_train)
+    model2 = XGBClassifier(
+        scale_pos_weight=len(y_train[y_train==0]) / len(y_train[y_train==1]),  # Auto-balance
+        n_estimators=100,
+        max_depth=6,
+        learning_rate=0.1,
+        random_state=42,
+        eval_metric='logloss'  
+    )
 
-    y_proba = model.predict_proba(X_test)[:, 1]
+    model2.fit(X_train, y_train)
+
+    y_proba = model2.predict_proba(X_test)[:, 1]
     threshold = 0.4  # Lower = catch more churners, more false alarms
     y_pred = (y_proba >= threshold).astype(int)
 
-    #y_pred = model.predict(X_test)
+    #y_pred = model2.predict(X_test)
+    #y_proba = model2.predict_proba(X_test)[:, 1]
 
     metrics = {
         "accuracy": accuracy_score(y_test, y_pred),
@@ -137,7 +142,7 @@ def _(C_VALUE,SOLVER, MAX_ITER,TEST_SIZE, X_scaled, y):
         "confusion": confusion_matrix(y_test, y_pred),
         "report": classification_report(y_test, y_pred),
     }
-    return metrics, model, 
+    return metrics, model2, 
 
 
 @app.cell
@@ -149,6 +154,11 @@ def _(metrics):
 @app.cell
 def _(metrics):
     print(metrics["report"])
+    return
+
+@app.cell #added for ROC-AUC
+def _(metrics):
+    print(f"ROC-AUC Score: {metrics['roc_auc']:.4f}")
     return
 
 
