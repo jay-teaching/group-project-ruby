@@ -14,7 +14,7 @@ with app.setup:
                                  confusion_matrix, f1_score, roc_auc_score)
     from sklearn.model_selection import train_test_split
     from sklearn.preprocessing import StandardScaler
-    from sklearn.ensemble import RandomForestClassifier
+    #from sklearn.ensemble import RandomForestClassifier
     from xgboost import XGBClassifier
 
 
