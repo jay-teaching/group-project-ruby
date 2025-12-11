@@ -9,6 +9,7 @@ dependencies = [
     "fastapi>=0.124.0",
     "joblib>=1.5.2",
     "marimo>=0.17.8",
+    "msgspec>=0.20.0",
     "pandas>=2.3.3",
     "predictions>=1.0.2",
     "requests>=2.32.5",

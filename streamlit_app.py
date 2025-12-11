@@ -2,13 +2,16 @@ import requests
 import streamlit as st
 from PIL import Image
 
+#TODO: import dataset for analysis charts later
+
 # ---------------------------
 # CONFIG
 # ---------------------------
 st.set_page_config(
-    page_title="Ruby Churn Predictor",
+    page_title="Project-Ruby Churn Predictor",
+    page_icon=":diamonds:",
     layout="wide",
-    initial_sidebar_state="expanded"
+    initial_sidebar_state="auto" #discuss if we want that
 )
 
 logo = Image.open("Logo1_.png")
