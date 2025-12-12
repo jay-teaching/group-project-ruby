@@ -148,6 +148,7 @@ def _(TEST_SIZE, X_scaled, y):  #C_VALUE,SOLVER, MAX_ITER,
     threshold = 0.4  # Lower = catch more churners, more false alarms
     y_pred = (y_proba >= threshold).astype(int)
 
+    #for testing purposes
     #y_pred = model2.predict(X_test)
     #y_proba = model2.predict_proba(X_test)[:, 1]
 
