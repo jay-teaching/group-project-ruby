@@ -19,5 +19,14 @@ def test_make_prediction_simple():
         "tenure": 2,
         "MonthlyCharges": 12.3,
     }
+
+    ['tenure',
+    'MonthlyCharges',
+                         'TechSupport_yes',
+                         'Contract_one year', 
+                         'Contract_two year', 
+                         'PaperlessBilling_yes',
+                         'InternetService_fiber optic',
+                         'Dependents_yes']
     result = prediction.make_prediction(**payload)
     assert isinstance(result, float)
