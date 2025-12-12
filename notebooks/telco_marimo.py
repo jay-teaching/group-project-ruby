@@ -38,10 +38,10 @@ def _():
     SELECTED_FEATURES = ['tenure',
                          'MonthlyCharges',
                          'TechSupport_yes',
-                         'Contract_one year', 
-                         'Contract_two year', 
+                         'Contract_one_year', 
+                         'Contract_two_year', 
                          'PaperlessBilling_yes',
-                         'InternetService_fiber optic',
+                         'InternetService_fiber_optic',
                          'Dependents_yes']
     
     TEST_SIZE = 0.20
