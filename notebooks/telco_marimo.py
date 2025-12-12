@@ -33,7 +33,7 @@ def _():
     DATA_PATH = Path("input/WA_Fn-UseC_-Telco-Customer-Churn.csv")
     MODEL_SAVE_PATH = Path("models/telco_logistic_regression.joblib")
 
-    SAVE_MODEL = False
+    SAVE_MODEL = True
 
     SELECTED_FEATURES = ['tenure',
                          'MonthlyCharges',
@@ -159,7 +159,7 @@ def _(TEST_SIZE, X_scaled, y):  #C_VALUE,SOLVER, MAX_ITER,
         "confusion": confusion_matrix(y_test, y_pred),
         "report": classification_report(y_test, y_pred),
     }
-    return metrics, model2, 
+    return metrics, model
 
 
 @app.cell
