@@ -107,14 +107,14 @@ internetserviceno = 1 if internet_service == "No internet" else 0
 # ---------------------------
 payload = {
     "tenure": int(tenure),
-    "monthly": float(monthly),
-    "techsupport": int(TechSupport_yes),
-    "contractoneyear": int(Contract_one_year),
-    "contracttwoyear": int(Contract_two_year),
-    "paperlessbilling": int(PaperlessBilling_yes),
-    "internetservicefiberoptic": int(InternetService_fiber_optic),
+    "monthly": int(monthly),
+    "techsupport": int(techsupport),
+    "contractoneyear": int(contractoneyear),
+    "contracttwoyear": int(contracttwoyear),
+    "paperlessbilling": int(paperlessbilling),
+    "internetservicefiberoptic": int(internetservicefiberoptic),
     "internetserviceno": int(internetserviceno),
-    "dependents": int(Dependents_yes),
+    "dependents": int(dependents)
 }
 
 
