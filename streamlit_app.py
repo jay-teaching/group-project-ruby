@@ -100,7 +100,7 @@ Contract_one_year = 1 if contract_type == "One year" else 0
 Contract_two_year = 1 if contract_type == "Two years" else 0
 
 InternetService_fiber_optic = 1 if internet_service == "Fiber optic" else 0
-internetserviceno = 1 if internet_service == "No internet" else 0
+InternetService_no = 1 if internet_service == "No internet" else 0
 
 # ---------------------------
 # PAYLOAD (BACKEND CONTRACT)
@@ -108,13 +108,13 @@ internetserviceno = 1 if internet_service == "No internet" else 0
 payload = {
     "tenure": int(tenure),
     "monthly": int(monthly),
-    "techsupport": int(techsupport),
-    "contractoneyear": int(contractoneyear),
-    "contracttwoyear": int(contracttwoyear),
-    "paperlessbilling": int(paperlessbilling),
-    "internetservicefiberoptic": int(internetservicefiberoptic),
-    "internetserviceno": int(internetserviceno),
-    "dependents": int(dependents)
+    "techsupport": int(TechSupport_yes),
+    "contractoneyear": int(Contract_one_year),
+    "contracttwoyear": int(Contract_two_year),
+    "paperlessbilling": int(PaperlessBilling_yes),
+    "internetservicefiberoptic": int(InternetService_fiber_optic),
+    "internetserviceno": int(InternetService_no),
+    "dependents": int(Dependents_yes)
 }
 
 
