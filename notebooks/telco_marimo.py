@@ -35,8 +35,14 @@ def _():
 
     SAVE_MODEL = False
 
-    SELECTED_FEATURES = ['Dependents_yes','TechSupport_yes','Contract_one year', 'Contract_two year', 'OnlineBackup_yes','OnlineSecurity_yes', 'InternetService_fiber optic',
-                         'DeviceProtection_yes','tenure', 'MonthlyCharges']
+    SELECTED_FEATURES = ['tenure',
+                         'MonthlyCharges'
+                         'TechSupport_yes',
+                         'Contract_one year', 
+                         'Contract_two year', 
+                         'PaperlessBilling_yes',
+                         'InternetService_fiber optic',
+                         'Dependents_yes']
     
     TEST_SIZE = 0.20
     C_VALUE = 1.0
@@ -74,7 +80,8 @@ def _(SELECTED_FEATURES):
 
         for column in cleaned.select_dtypes(include="object"):
             cleaned[column] = cleaned[column].str.lower().str.strip()
-
+        
+        # Binary encoding
         X = pd.get_dummies(cleaned.drop(columns=["Churn"]), drop_first=True, dtype=int)
 
         print("Available features after encoding:", X.columns.tolist())
@@ -82,8 +89,11 @@ def _(SELECTED_FEATURES):
 
         # Choose features
         X = X[SELECTED_FEATURES]
+
+        # Target variable
         y = cleaned["Churn"].map({"yes": 1, "no": 0}).to_numpy()
 
+        
         scaler = StandardScaler()
         X_scaled = scaler.fit_transform(X)
         return cleaned, X_scaled, y, scaler, X.columns.tolist()
