@@ -64,3 +64,4 @@ uvicorn==0.38.0
 watchdog==6.0.0
 websockets==15.0.1
 werkzeug==3.1.4
+xgboost==3.1.2
