@@ -19,7 +19,8 @@ logo = Image.open("Logo1_.png")
 # ---------------------------
 # API ENDPOINTS
 # ---------------------------
-DEV_API = "http://127.0.0.1:8000/predict"
+DEV_API = "http://127.0.0.1:7071/api/ruby_predict"
+
 
 CONFIG_PATH = os.path.join(os.path.dirname(__file__), "config.json")
 _prod_api_key = None
