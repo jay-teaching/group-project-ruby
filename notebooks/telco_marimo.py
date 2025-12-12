@@ -36,7 +36,7 @@ def _():
     SAVE_MODEL = False
 
     SELECTED_FEATURES = ['tenure',
-                         'MonthlyCharges'
+                         'MonthlyCharges',
                          'TechSupport_yes',
                          'Contract_one year', 
                          'Contract_two year', 
