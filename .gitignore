@@ -209,3 +209,4 @@ __marimo__/
 # MLflow
 mlruns/
 .python_packages
+/config.json

@@ -1,6 +1,8 @@
 import requests
 import streamlit as st
 from PIL import Image
+import os
+import json
 
 #TODO: import dataset for analysis charts later
 
@@ -20,8 +22,20 @@ logo = Image.open("Logo1_.png")
 # API ENDPOINTS
 # ---------------------------
 DEV_API = "http://127.0.0.1:8000/predict"
-PROD_API = "https://predictingforjay.azurewebsit..."  # later
 
+CONFIG_PATH = os.path.join(os.path.dirname(__file__), "config.json")
+_prod_api_key = None
+if os.path.isfile(CONFIG_PATH):
+    try:
+        with open(CONFIG_PATH, "r", encoding="utf-8") as f:
+            _cfg = json.load(f)
+            _prod_api_key = _cfg.get("prod_api_key")
+    except Exception:
+        _prod_api_key = None
+
+PROD_API = None
+if _prod_api_key:
+    PROD_API = f"https://predictingforruby.azurewebsites.net/api/ruby_predict?code={_prod_api_key}"
 
 def fetch_prediction(payload: dict, use_prod: bool = False) -> dict:
     """
@@ -29,7 +43,9 @@ def fetch_prediction(payload: dict, use_prod: bool = False) -> dict:
     For now we ALWAYS use DEV_API so nothing breaks.
     Later you can switch to PROD_API logic.
     """
-    url = DEV_API  
+    url = DEV_API 
+    if use_prod and PROD_API:
+        url = PROD_API
     response = requests.post(url, json=payload, timeout=5)
     response.raise_for_status()
     return response.json()
@@ -41,6 +57,7 @@ def fetch_prediction(payload: dict, use_prod: bool = False) -> dict:
 with st.sidebar:
     st.markdown("### Settings")
     st.caption("API mode etc. can be configured here later.")
+    use_prod = st.checkbox("Use PROD API (requires config.json)", value=False)
     # Just a placeholder for now
 
 
@@ -108,7 +125,7 @@ with center:
 # ---------------------------
 if predict_btn:
     try:
-        data = fetch_prediction(payload)
+        data = fetch_prediction(payload, use_prod=use_prod)
         prediction = data.get("prediction", "No prediction returned")
 
         st.markdown("---")
