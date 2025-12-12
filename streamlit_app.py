@@ -107,15 +107,16 @@ internetserviceno = 1 if internet_service == "No internet" else 0
 # ---------------------------
 payload = {
     "tenure": int(tenure),
-    "MonthlyCharges": float(monthly),
-    "TechSupport_yes": TechSupport_yes,
-    "Contract_one_year": Contract_one_year,
-    "Contract_two_year": Contract_two_year,
-    "PaperlessBilling_yes": PaperlessBilling_yes,
-    "InternetService_fiber_optic": InternetService_fiber_optic,
-    "internetserviceno": internetserviceno,
-    "Dependents_yes": Dependents_yes,
+    "monthly": float(monthly),
+    "techsupport": int(TechSupport_yes),
+    "contractoneyear": int(Contract_one_year),
+    "contracttwoyear": int(Contract_two_year),
+    "paperlessbilling": int(PaperlessBilling_yes),
+    "internetservicefiberoptic": int(InternetService_fiber_optic),
+    "internetserviceno": int(internetserviceno),
+    "dependents": int(Dependents_yes),
 }
+
 
 # ---------------------------
 # PREDICT BUTTON
