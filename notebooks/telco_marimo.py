@@ -133,7 +133,7 @@ def _(TEST_SIZE, X_scaled, y):  #C_VALUE,SOLVER, MAX_ITER,
     #min_samples_split=20,random_state=42
     #) # LR is performing better
 
-    model2 = XGBClassifier(
+    model = XGBClassifier(
         scale_pos_weight=len(y_train[y_train==0]) / len(y_train[y_train==1]),  # Auto-balance
         n_estimators=100,
         max_depth=6,
@@ -142,9 +142,9 @@ def _(TEST_SIZE, X_scaled, y):  #C_VALUE,SOLVER, MAX_ITER,
         eval_metric='logloss'  
     )
 
-    model2.fit(X_train, y_train)
+    model.fit(X_train, y_train)
 
-    y_proba = model2.predict_proba(X_test)[:, 1]
+    y_proba = model.predict_proba(X_test)[:, 1]
     threshold = 0.4  # Lower = catch more churners, more false alarms
     y_pred = (y_proba >= threshold).astype(int)
 
