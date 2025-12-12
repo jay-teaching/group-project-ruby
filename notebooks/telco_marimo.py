@@ -42,6 +42,7 @@ def _():
                          'Contract_two_year', 
                          'PaperlessBilling_yes',
                          'InternetService_fiber_optic',
+                         'InternetService_no',
                          'Dependents_yes']
     
     TEST_SIZE = 0.20

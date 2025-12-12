@@ -23,6 +23,7 @@ class Customer(BaseModel):
     Contract_two_year: int = Field(alias="contracttwoyear")
     PaperlessBilling_yes: int = Field(alias="paperlessbilling")
     InternetService_fiber_optic: int = Field(alias="internetservicefiberoptic")
+    InternetService_no: int = Field(alias="internetserviceno")
     Dependents_yes: int = Field(alias="dependents")
     
 

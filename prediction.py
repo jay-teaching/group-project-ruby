@@ -17,6 +17,7 @@ FEATURE_ORDER = ['tenure',
                 'Contract_two_year', 
                 'PaperlessBilling_yes',
                 'InternetService_fiber_optic',
+                'internetserviceno',
                 'Dependents_yes']
 
 

@@ -21,6 +21,7 @@ def ruby_predict(req: func.HttpRequest) -> func.HttpResponse:
         Contract_two_year=0,
         PaperlessBilling_yes=0,
         InternetService_fiber_optic=0,
+        internetserviceno=0,
         Dependents_yes=0
     )
 
