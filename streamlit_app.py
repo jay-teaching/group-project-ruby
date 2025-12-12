@@ -4,8 +4,6 @@ from PIL import Image
 import os
 import json
 
-#TODO: import dataset for analysis charts later
-
 # ---------------------------
 # CONFIG
 # ---------------------------
