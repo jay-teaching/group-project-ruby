@@ -38,24 +38,24 @@ monthly = st.number_input(
 )
 
 # Binary / categorical inputs
-techsupport = int(st.checkbox("Tech Support", value=False))
-contractoneyear = int(st.checkbox("Contract: One year", value=False))
-contracttwoyear = int(st.checkbox("Contract: Two year", value=False))
-paperlessbilling = int(st.checkbox("Paperless Billing", value=False))
-internetservicefiberoptic = int(st.checkbox("Internet Service: Fiber optic", value=False))
-internetserviceno = int(st.checkbox("Internet Service: None", value=False))
-dependents = int(st.checkbox("Has Dependents", value=False))
+TechSupport_yes = int(st.checkbox("Tech Support", value=False))
+Contract_one_year = int(st.checkbox("Contract: One year", value=False))
+Contract_two_year = int(st.checkbox("Contract: Two year", value=False))
+PaperlessBilling_yes = int(st.checkbox("Paperless Billing", value=False))
+InternetService_fiber_optic = int(st.checkbox("Internet Service: Fiber optic", value=False))
+InternetService_no = int(st.checkbox("Internet Service: None", value=False))
+Dependents_yes = int(st.checkbox("Has Dependents", value=False))
 
 payload = {
     "tenure": int(tenure),
     "monthly": int(monthly),
-    "techsupport": int(techsupport),
-    "contractoneyear": int(contractoneyear),
-    "contracttwoyear": int(contracttwoyear),
-    "paperlessbilling": int(paperlessbilling),
-    "internetservicefiberoptic": int(internetservicefiberoptic),
-    "internetserviceno": int(internetserviceno),
-    "dependents": int(dependents)
+    "TechSupport_yes": int(TechSupport_yes),
+    "Contract_one_year": int(Contract_one_year),
+    "Contract_two_year": int(Contract_two_year),
+    "PaperlessBilling_yes": int(PaperlessBilling_yes),
+    "InternetService_fiber_optic": int(InternetService_fiber_optic),
+    "InternetService_no": int(InternetService_no),
+    "Dependents_yes": int(Dependents_yes)
 }
 
 try:

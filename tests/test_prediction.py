@@ -13,7 +13,7 @@ def test_make_prediction_simple():
                 'Contract_one year':1, 
                 'Contract_two year':0, 
                 'PaperlessBilling_yes':1,
-                'InternetService_fiber optic':1,
+                'InternetService_fiber_optic':1,
                 'InternetService_no':0,
                 'Dependents_yes':1
     }
