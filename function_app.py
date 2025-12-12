@@ -13,15 +13,15 @@ def ruby_predict(req: func.HttpRequest) -> func.HttpResponse:
     techsupport = req.params.get('techsupport')
 
     prediction = make_prediction(
-    tenure=tenure,
-    MonthlyCharges=monthly,
-    TechSupport_yes=techsupport
+        tenure=tenure,
+        MonthlyCharges=monthly,
+        TechSupport_yes=techsupport,
     # Add new features:
-    Contract_one_year=0,        
-    Contract_two_year=0,
-    PaperlessBilling_yes=0,
-    InternetService_fiber_optic=0,
-    Dependents_yes=0
+        Contract_one_year=0,        
+        Contract_two_year=0,
+        PaperlessBilling_yes=0,
+        InternetService_fiber_optic=0,
+        Dependents_yes=0
     )
 
     if tenure and monthly and techsupport:

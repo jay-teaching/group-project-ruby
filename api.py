@@ -19,6 +19,12 @@ class Customer(BaseModel):
     tenure: int
     MonthlyCharges: int = Field(alias="monthly")
     TechSupport_yes: int = Field(alias="techsupport")
+    Contract_one_year: int = Field(alias="contractoneyear")
+    Contract_two_year: int = Field(alias="contracttwoyear")
+    PaperlessBilling_yes: int = Field(alias="paperlessbilling")
+    InternetService_fiber_optic: int = Field(alias="internetservicefiberoptic")
+    Dependents_yes: int = Field(alias="dependents")
+    
 
 
 app = FastAPI()
