@@ -37,7 +37,14 @@ monthly = st.number_input(
     "Monthly Charges", min_value=0, max_value=1000, step=10, value=70
 )
 
-techsupport = int(st.toggle("Tech Support", value=False))
+# Binary / categorical inputs
+techsupport = int(st.checkbox("Tech Support", value=False))
+contractoneyear = int(st.checkbox("Contract: One year", value=False))
+contracttwoyear = int(st.checkbox("Contract: Two year", value=False))
+paperlessbilling = int(st.checkbox("Paperless Billing", value=False))
+internetservicefiberoptic = int(st.checkbox("Internet Service: Fiber optic", value=False))
+internetserviceno = int(st.checkbox("Internet Service: None", value=False))
+dependents = int(st.checkbox("Has Dependents", value=False))
 
 payload = {
     "tenure": int(tenure),
