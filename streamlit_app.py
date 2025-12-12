@@ -105,18 +105,18 @@ InternetService_no = 1 if internet_service == "No internet" else 0
 # ---------------------------
 # PAYLOAD (BACKEND CONTRACT)
 # ---------------------------
+
 payload = {
     "tenure": int(tenure),
-    "monthly": int(monthly),
-    "techsupport": int(TechSupport_yes),
-    "contractoneyear": int(Contract_one_year),
-    "contracttwoyear": int(Contract_two_year),
-    "paperlessbilling": int(PaperlessBilling_yes),
-    "internetservicefiberoptic": int(InternetService_fiber_optic),
-    "internetserviceno": int(InternetService_no),
-    "dependents": int(Dependents_yes)
+    "MonthlyCharges": float(monthly),           # Changed from "monthly"
+    "TechSupport_yes": int(TechSupport_yes),    # Changed from "techsupport"
+    "Contract_one_year": int(Contract_one_year),# Changed from "contractoneyear"
+    "Contract_two_year": int(Contract_two_year),# Changed from "contracttwoyear"
+    "PaperlessBilling_yes": int(PaperlessBilling_yes), # Changed from "paperlessbilling"
+    "InternetService_fiber_optic": int(InternetService_fiber_optic), # Changed from "internetservicefiberoptic"
+    "InternetService_no": int(InternetService_no),     # Changed from "internetserviceno"
+    "Dependents_yes": int(Dependents_yes)       # Changed from "dependents"
 }
-
 
 # ---------------------------
 # PREDICT BUTTON
