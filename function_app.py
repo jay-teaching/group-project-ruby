@@ -4,9 +4,9 @@ from prediction import make_prediction
 
 app = func.FunctionApp(http_auth_level=func.AuthLevel.FUNCTION)
 
-@app.route(route="ruby_predict")
+@app.route(route="ruby_predict", methods=["POST"])
 def ruby_predict(req: func.HttpRequest) -> func.HttpResponse:
-    logging.info('Python HTTP trigger function processed a request.')
+    logging.info('Processing churn prediction request.')
 
     tenure = req.params.get('tenure')
     monthly = req.params.get('monthly')
@@ -16,12 +16,18 @@ def ruby_predict(req: func.HttpRequest) -> func.HttpResponse:
     tenure=tenure,
     MonthlyCharges=monthly,
     TechSupport_yes=techsupport
+    # Add new features:
+    Contract_one_year=0,        
+    Contract_two_year=0,
+    PaperlessBilling_yes=0,
+    InternetService_fiber_optic=0,
+    Dependents_yes=0
     )
 
     if tenure and monthly and techsupport:
-        return func.HttpResponse(f"For the given customer tenure, monthly charge amount, and tech support, the predicted churn is {prediction}. This HTTP triggered function executed successfully.")
+        return func.HttpResponse(f"For the given inputs, the predicted churn is {prediction}.")
     else:
         return func.HttpResponse(
-             "This HTTP triggered function executed successfully. tenure, monthly and techsupport.",
+             "This HTTP triggered function executed successfully.",
              status_code=200
         )
