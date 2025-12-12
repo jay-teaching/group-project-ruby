@@ -28,7 +28,7 @@ def ruby_predict(req: func.HttpRequest) -> func.HttpResponse:
             "Contract_two_year": req_body.get('Contract_two_year'),
             "PaperlessBilling_yes": req_body.get('PaperlessBilling_yes'),
             "InternetService_fiber_optic": req_body.get('InternetService_fiber_optic'),
-            "internetserviceno": req_body.get('internetserviceno'),
+            "InternetService_no": req_body.get('InternetService_no'),
             "Dependents_yes": req_body.get('Dependents_yes')
         }
         

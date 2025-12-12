@@ -43,6 +43,12 @@ payload = {
     "tenure": int(tenure),
     "monthly": int(monthly),
     "techsupport": int(techsupport),
+    "contractoneyear": int(contractoneyear),
+    "contracttwoyear": int(contracttwoyear),
+    "paperlessbilling": int(paperlessbilling),
+    "internetservicefiberoptic": int(internetservicefiberoptic),
+    "internetserviceno": int(internetserviceno),
+    "dependents": int(dependents)
 }
 
 try:
