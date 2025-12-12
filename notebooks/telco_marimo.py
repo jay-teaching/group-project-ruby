@@ -84,6 +84,11 @@ def _(SELECTED_FEATURES):
         # Binary encoding
         X = pd.get_dummies(cleaned.drop(columns=["Churn"]), drop_first=True, dtype=int)
 
+        # Data Naming Change
+        X["Contract_one_year"] = X.pop("Contract_one year")
+        X["Contract_two_year"] = X.pop("Contract_two year")
+        X["InternetService_fiber_optic"] = X.pop("InternetService_fiber optic")
+
         print("Available features after encoding:", X.columns.tolist())
         print("Selected features for modeling:", SELECTED_FEATURES)
 
